@@ -1,5 +1,14 @@
+@import "public/css/scss/vars";
+
 .content {
   position: relative;
+
+  .home {
+    position: absolute;
+    right: 5px;
+    padding: 20px;
+
+  }
 
   .container {
     position: absolute;
@@ -17,13 +26,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      color: $primary;
 
     }
   }
 
   .form {
     width: 400px;
-    height: 350px;
+    height: auto;
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -37,7 +47,7 @@
   }
 }
 
-.btnReg{
+.btnReg {
   width: 100%;
   margin-bottom: 5px;
 }

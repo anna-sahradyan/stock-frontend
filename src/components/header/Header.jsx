@@ -9,7 +9,7 @@ const Header = () => {
     const [isSignup, setIsSignup] = useState(false);
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
-        navigate("/login")
+        navigate("/auth")
     }
     return (
         <>
