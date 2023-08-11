@@ -13,7 +13,10 @@ a {
 
 body {
   position: relative;
-  min-height: 100%; }
+  min-height: 100%;
+  background-color: #f9fafb;
+
+  }
 
 ul {
   list-style-type: none; }
@@ -26,8 +29,7 @@ html {
 
 button {
   padding: 0;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .container {
   max-width: 1200px;
@@ -35,6 +37,6 @@ button {
   padding: 0 20px; }
 
 .layout {
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   padding: 0 20px; }

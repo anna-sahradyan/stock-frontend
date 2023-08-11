@@ -1,9 +1,10 @@
 import React from 'react';
+import "./sidebar.scss";
 
-const SidebarItem = () => {
+const SidebarItem = ({item}) => {
     return (
         <>
-
+            <div>{item.title}</div>
         </>
     );
 };

@@ -1,6 +1,7 @@
-@import "public/css/scss/vars";
-.nav {
-  padding: 5px;
+@import "../../../public/css/vars";
+.nav-header{
+  padding: 20px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   color: #232F85;

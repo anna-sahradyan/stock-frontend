@@ -1,24 +1,22 @@
-import React, {useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import React from 'react';
+import { useNavigate} from "react-router-dom";
 import "./header.scss";
 import {Button} from "@mui/material";
-import {RiProductHuntLine} from "react-icons/ri";
+
 
 const Header = () => {
     const navigate = useNavigate();
-    const [isSignup, setIsSignup] = useState(false);
-    const switchMode = () => {
-        setIsSignup((prevIsSignup) => !prevIsSignup);
+    const logout= () => {
         navigate("/auth")
     }
     return (
         <>
-            <div className={"container"}>
-                <section className={"nav"}>
+            <div className={"layout"}>
+                <section className={"nav-header"}>
                     <div className="logo">
-                        <RiProductHuntLine size={33}/>
+                       <h2><span>Welcome:</span><span>Anna</span></h2>
                     </div>
-                    <Button onClick={switchMode} size="medium" variant="contained"> {isSignup ? "Sign Up" : "Sign In"}
+                    <Button onClick={logout} size="medium" variant="contained"> Logout
                     </Button>
 
 

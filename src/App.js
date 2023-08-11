@@ -5,7 +5,7 @@ import Home from "./pages/home/Home";
 import Layout from "./components/layout/Layout";
 import AddProduct from "./pages/addProduct/AddProduct ";
 import Sidebar from "./components/sidebar/Sidebar";
-import LogOut from "./pages/auth/LogOut";
+import Reset from "./pages/auth/Reset";
 import Forgot from "./pages/auth/Forgot";
 import Auth from "./pages/auth/Auth";
 
@@ -19,13 +19,13 @@ const App = () => {
                 <Route path={"/"} element={<Home/>}/>
                 <Route path={"/auth"} element={<Auth/>}/>
                 <Route path={"/forgot"} element={<Forgot/>}/>
-                <Route path={"/logout/:token"} element={<LogOut/>}/>
+                <Route path={"/reset/:token"} element={<Reset/>}/>
                 <Route
                     path="/add-product"
                     element={
                         <Sidebar>
                             <Layout>
-                                <AddProduct />
+                                <AddProduct/>
                             </Layout>
                         </Sidebar>
                     }

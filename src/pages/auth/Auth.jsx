@@ -43,11 +43,11 @@ const Auth = () => {
                     <Card sx={{
                         minWidth: 600,
                         width: "50%",
-                        height: "400px",
+                        height: "450px",
                         position: "absolute",
                         top: "50%",
                         left: "50%",
-                        transform: "translate(60%, 30%)"
+                        transform: "translate(60%, 20%)"
                     }}>
                         <div>
                             <div className="bi">
@@ -85,12 +85,6 @@ const Auth = () => {
                                 <Button type="submit" className="btnLogin" variant={"contained"}>
                                     Login
                                 </Button>
-                                {/*                  <Link to="/forgot">Forgot Password</Link>*/}
-                                {/*                  <span className={"register"}>*/}
-                                {/*  <Link to="/">Home</Link>*/}
-                                {/*  <p> &nbsp; Don't have an account? &nbsp;</p>*/}
-                                {/*  <Link to="/register">Register</Link>*/}
-                                {/*</span>*/}
                                 <Button onClick={switchMode} className={"btnReg"}>
                                     {isSignUp ? "Already have an account ? Sign In " : "Don't have an account ? Sign Up"}
                                 </Button>

@@ -1,0 +1,40 @@
+@import "public/css/vars";
+.layout {
+  display: flex;
+}
+main {
+  width: 100%;
+  // padding: 20px;
+  color: #ccc;
+
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 100vh;
+  flex-shrink: 0;
+  //background-color:$accent ;
+  overflow: auto;
+  color: $bg-color;
+  transition: all 0.5s;
+
+  .top_section {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    transition: all 0.5s;
+    background-color: $accent;
+    height: 70px;
+  }
+  .bars{
+    display: flex;
+    font-size: 25px;
+    cursor: pointer;
+    color: $bg-color;
+    transition: all 0.3s;
+  }
+}
+
+
