@@ -1,13 +1,9 @@
 @import "public/css/vars";
 .layout {
   display: flex;
+  //background-color:$accent ;
 }
-main {
-  width: 100%;
-  // padding: 20px;
-  color: #ccc;
 
-}
 .sidebar {
   position: fixed;
   top: 0;
@@ -27,14 +23,20 @@ main {
     transition: all 0.5s;
     background-color: $accent;
     height: 70px;
+    .bars{
+      display: flex;
+      font-size: 25px;
+      cursor: pointer;
+      color: $bg-color;
+      transition: all 0.3s;
+
+    }
   }
-  .bars{
-    display: flex;
-    font-size: 25px;
-    cursor: pointer;
-    color: $bg-color;
-    transition: all 0.3s;
-  }
+
 }
 
+main {
+  width: 100%;
+  color: #ccc;
 
+}

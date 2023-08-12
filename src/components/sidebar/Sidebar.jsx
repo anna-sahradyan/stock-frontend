@@ -30,7 +30,7 @@ const Sidebar = ({children}) => {
 
                         <div
                             className="bars"
-                            style={{ marginLeft: isOpen ? "100px" : "0px" }}>
+                            style={{ marginLeft: isOpen ? "120px" : "0px" }}>
                             <button></button>
                             <HiMenuAlt3   color={" #F9F6E5"} onClick={toggle} />
                         </div>
@@ -44,8 +44,7 @@ const Sidebar = ({children}) => {
                     style={{
                         paddingLeft: isOpen ? "230px" : "60px",
                         transition: "all .5s",
-                    }}
-                >
+                    }}>
                     {children}
                 </main>
             </div>
