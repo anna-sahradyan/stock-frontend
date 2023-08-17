@@ -83,13 +83,14 @@ const Auth = () => {
                                     </>
                                 )}
                                 <Button type="submit" className="btnLogin" variant={"contained"}>
-                                    Login
+                                    Submit
                                 </Button>
                                 <Button onClick={switchMode} className={"btnReg"}>
                                     {isSignUp ? "Already have an account ? Sign In " : "Don't have an account ? Sign Up"}
                                 </Button>
                                 <Button onClick={switchModeForgot} className={"btnReg"}>
                                     {isSignUp ? "Don't have an account ? Sign Up" : "Forgot Password ? Forgot Password "}
+
                                 </Button>
 
                             </form>
