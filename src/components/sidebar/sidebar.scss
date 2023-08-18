@@ -58,11 +58,11 @@ main {
 }
 
 .s-parent {
-  border-bottom: 2px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .sidebar-item:hover {
-  background-color: #eee;
+  //background-color: #eee;
 }
 
 .sidebar-title {
@@ -97,7 +97,9 @@ main {
 .sidebar-item.open > .sidebar-title .arrow-icon {
   transform: rotate(90deg);
 }
-
+.arrow-icon{
+  color: $accent;
+}
 .sidebar-content {
   padding-top: 0.25em;
   height: 0;
@@ -144,4 +146,11 @@ a {
 
 .sublink .sidebar-item .sidebar-title {
   padding-left: 40px;
+}
+.title-account {
+  color: $accent;
+
+}
+.icon{
+  color: $accent;
 }

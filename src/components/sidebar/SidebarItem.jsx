@@ -7,8 +7,7 @@ const activeSublink = ({ isActive }) => (isActive ? "active" : "link");
 
 const SidebarItem = ({ item, isOpen }) => {
     const [expandMenu, setExpandMenu] = useState(false);
-
-    if (item.childrens) {
+    if (item.children) {
         return (
             <div
                 className={
@@ -18,7 +17,7 @@ const SidebarItem = ({ item, isOpen }) => {
                 <div className="sidebar-title">
           <span>
             {item.icon && <div className="icon">{item.icon}</div>}
-              {isOpen && <div>{item.title}</div>}
+              {isOpen && <div className={"title-account"}>{item.title}</div>}
           </span>
                     <MdKeyboardArrowRight
                         size={25}
@@ -27,7 +26,7 @@ const SidebarItem = ({ item, isOpen }) => {
                     />
                 </div>
                 <div className="sidebar-content">
-                    {item.childrens.map((child, index) => {
+                    {item.children.map((child, index) => {
                         return (
                             <div key={index} className="s-child">
                                 <NavLink to={child.path} className={activeSublink}>

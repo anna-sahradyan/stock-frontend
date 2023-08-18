@@ -8,15 +8,10 @@ import Sidebar from "./components/sidebar/Sidebar";
 import Reset from "./pages/auth/Reset";
 import Forgot from "./pages/auth/Forgot";
 import Auth from "./pages/auth/Auth";
-import * as PropTypes from "prop-types";
 import Dashboard from "./pages/dashboard/Dashboard";
 
 
-function Dashbo(props) {
-    return null;
-}
 
-Dashbo.propTypes = {ard: PropTypes.bool};
 const App = () => {
 
     return (
