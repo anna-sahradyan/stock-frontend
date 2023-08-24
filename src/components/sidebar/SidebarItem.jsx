@@ -3,7 +3,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
 const activeLink = ({ isActive }) => (isActive ? "active" : "link");
-const activeSublink = ({ isActive }) => (isActive ? "active" : "link");
+const activeSubLink = ({ isActive }) => (isActive ? "active" : "link");
 
 const SidebarItem = ({ item, isOpen }) => {
     const [expandMenu, setExpandMenu] = useState(false);
@@ -29,7 +29,7 @@ const SidebarItem = ({ item, isOpen }) => {
                     {item.children.map((child, index) => {
                         return (
                             <div key={index} className="s-child">
-                                <NavLink to={child.path} className={activeSublink}>
+                                <NavLink to={child.path} className={activeSubLink}>
                                     <div className="sidebar-item">
                                         <div className="sidebar-title">
                       <span>

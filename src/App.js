@@ -21,7 +21,7 @@ const App = () => {
                 <Route path={"/auth"} element={<Auth/>}/>
                 <Route path={"/forgot"} element={<Forgot/>}/>
                 <Route path={"/reset/:token"} element={<Reset/>}/>
-                <Route path="/add-product" element={<Sidebar><Layout><AddProduct/></Layout></Sidebar>}/>
+                <Route path="/add" element={<Sidebar><Layout><AddProduct/></Layout></Sidebar>}/>
                 <Route path="/dashboard" element={<Sidebar><Layout><Dashboard/></Layout></Sidebar>}/>
 
             </Routes>
