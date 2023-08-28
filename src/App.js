@@ -1,5 +1,4 @@
 import React from 'react';
-import "react-toastify/dist/ReactToastify.css";
 import {Route, Routes} from "react-router-dom";
 import Home from "./pages/home/Home";
 import Layout from "./components/layout/Layout";
@@ -9,6 +8,7 @@ import Reset from "./pages/auth/Reset";
 import Forgot from "./pages/auth/Forgot";
 import Auth from "./pages/auth/Auth";
 import Dashboard from "./pages/dashboard/Dashboard";
+import {ToastContainer} from "react-toastify";
 
 
 
@@ -16,6 +16,7 @@ const App = () => {
 
     return (
         <>
+            <ToastContainer/>
             <Routes>
                 <Route path={"/"} element={<Home/>}/>
                 <Route path={"/auth"} element={<Auth/>}/>

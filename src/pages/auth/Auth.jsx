@@ -6,6 +6,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {BiLogIn} from "react-icons/bi";
 import {TiUserAddOutline} from "react-icons/ti";
 import {useDispatch} from "react-redux";
+import {toast} from "react-toastify";
 
 
 const Auth = () => {
@@ -26,12 +27,46 @@ const Auth = () => {
     }
     const switchModeForgot = () => {
         setIsSignUp((prevIsSignUp) => !prevIsSignUp);
-        navigate("/forgot")
+        navigate("/forgot");
     }
-    const login = (e) => {
+    const login = async (e) => {
         e.preventDefault();
-        console.log(formData);
 
+        if (!name) {
+            toast.warn('Error: Name is required', {
+                className: 'custom-toast',
+            });
+            return;
+        }
+        if (!email) {
+            toast.warn('Error: Email is required', {
+                className: 'custom-toast',
+            });
+            return;
+        }
+        if (password.length < 6) {
+            toast.warn('Error: Password must be up to 6 chapters', {
+                className: 'custom-toast',
+            });
+            return;
+        }
+        if (password !== password2) {
+            toast.warn('Error: Passwords do not match', {
+                className: 'custom-toast',
+            });
+            return;
+        }
+        const userData = {
+            name,
+            email,
+            password,
+        }
+        setIsLoading(true);
+        try {
+
+        } catch (err) {
+            console.log(err);
+        }
     }
     const handleInputChange = (e) => {
         const {name, value} = e.target;
