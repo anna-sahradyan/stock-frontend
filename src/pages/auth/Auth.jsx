@@ -1,20 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./auth.scss";
 import Loader from "../../components/Loading/Loader";
 import {Button, Card} from "@mui/material";
 import {Link, useNavigate} from "react-router-dom";
 import {BiLogIn} from "react-icons/bi";
 import {TiUserAddOutline} from "react-icons/ti";
-import Header from "../../components/header/Header";
+import {useDispatch} from "react-redux";
+
 
 const Auth = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isSignUp, setIsSignUp] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [password2, setPassword2] = useState("");
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        password: "",
+        password2: ""
+    });
+    const {name, email, password, password2} = formData;
     const switchMode = () => {
         setIsSignUp((prevIsSignUp) => !prevIsSignUp);
 
@@ -23,17 +28,24 @@ const Auth = () => {
         setIsSignUp((prevIsSignUp) => !prevIsSignUp);
         navigate("/forgot")
     }
-    const login = () => {
+    const login = (e) => {
+        e.preventDefault();
+        console.log(formData);
 
     }
-    const handleInputChange = () => {
-
+    const handleInputChange = (e) => {
+        const {name, value} = e.target;
+        setFormData({...formData, [name]: value});
     }
+    useEffect(() => {
+
+    }, [dispatch]);
+
     return (
         <>
             <div className={"content"}>
-
-                <img src={`/img/reg2.jpg`} alt={"bg"} style={{width: "100%", height: "100vh", position: "absolute", opacity:"0.6"}}
+                <img src={`/img/reg2.jpg`} alt={"bg"}
+                     style={{width: "100%", height: "100vh", position: "absolute", opacity: "0.6"}}
                 />
                 <div className="home"><Link to={"/"}><img src="/img/home.png" alt=""/></Link></div>
                 <div className={`container`}>
@@ -71,8 +83,10 @@ const Auth = () => {
                                     value={password}
                                     onChange={handleInputChange}
                                 />
+
                                 {isSignUp && (
                                     <>
+
                                         <input
                                             type="password"
                                             placeholder="Confirm Password"
@@ -80,6 +94,14 @@ const Auth = () => {
                                             value={password2}
                                             onChange={handleInputChange}
                                         />
+                                        <input
+                                            type="text"
+                                            placeholder="Name"
+                                            name="name"
+                                            value={name}
+                                            onChange={handleInputChange}
+                                        />
+
                                     </>
                                 )}
                                 <Button type="submit" className="btnLogin" variant={"contained"}>
