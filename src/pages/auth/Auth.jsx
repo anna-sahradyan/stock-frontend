@@ -65,28 +65,31 @@ const Auth = () => {
             }
 
         }
-        if (!email || !password) {
-            return toast.error("All fields are required");
-        }
+        else{
+            if (!email || !password) {
+                return toast.error("All fields are required");
+            }
 
-        if (!validateEmail(email)) {
-            return toast.error("Please enter a valid email");
-        }
+            if (!validateEmail(email)) {
+                return toast.error("Please enter a valid email");
+            }
 
-        const userData = {
-            email,
-            password,
-        };
-        setIsLoading(true);
-        try {
-            const data = await loginUser(userData);
-            console.log(data);
-            await dispatch(SET_LOGIN(true));
-            await dispatch(SET_NAME(data.name));
-            navigate("/dashboard");
-            setIsLoading(false);
-        } catch (error) {
-            setIsLoading(false);
+            const userData = {
+                email,
+                password,
+            };
+            setIsLoading(true);
+            try {
+                const data = await loginUser(userData);
+                console.log(data);
+                await dispatch(SET_LOGIN(true));
+                await dispatch(SET_NAME(data.name));
+                navigate("/dashboard");
+                setIsLoading(false);
+            } catch (error) {
+                setIsLoading(false);
+            }
+
         }
 
     }
