@@ -5,6 +5,8 @@ import {Button, Card} from "@mui/material";
 import {Link, useNavigate} from "react-router-dom";
 
 import {AiOutlineMail} from "react-icons/ai";
+import {toast} from "react-toastify";
+import {forgotPassword, validateEmail} from "../../api";
 
 const Forgot = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -12,12 +14,23 @@ const Forgot = () => {
     const navigate = useNavigate();
 
 
-    const login = (e) => {
+    const login = async (e) => {
         e.preventDefault();
-    }
-    const handleInputChange = () => {
+        if (!email) {
+            return toast.error("Please enter an email");
+        }
+
+        if (!validateEmail(email)) {
+            return toast.error("Please enter a valid email");
+        }
+        const userData = {
+            email
+        };
+        await forgotPassword(userData);
+        setEmail("");
 
     }
+
     return (
         <>
             <div className={"content"}>
@@ -52,7 +65,7 @@ const Forgot = () => {
                                     placeholder="Email"
                                     name="email"
                                     value={email}
-                                    onChange={handleInputChange}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
 
 
