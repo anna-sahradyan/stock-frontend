@@ -7,6 +7,8 @@ import {BiLogIn} from "react-icons/bi";
 import {TiUserAddOutline} from "react-icons/ti";
 import {useDispatch} from "react-redux";
 import {toast} from "react-toastify";
+import {loginUser, registerUser, validateEmail} from "../../api";
+import {SET_LOGIN, SET_NAME} from "../../redux/features/auth/authSlice";
 
 
 const Auth = () => {
@@ -31,50 +33,67 @@ const Auth = () => {
     }
     const login = async (e) => {
         e.preventDefault();
+        if(isSignUp){
+            if (!name || !email || !password) {
+                return toast.error("All fields are required");
+            }
+            if (password.length < 6) {
+                return toast.error("Passwords must be up to 6 characters");
+            }
+            if (!validateEmail(email)) {
+                return toast.error("Please enter a valid email");
+            }
+            if (password !== password2) {
+                return toast.error("Passwords do not match");
+            }
+            const userData = {
+                name,
+                email,
+                password,
+            };
+            setIsLoading(true);
+            try {
+                const data = await registerUser(userData);
+                if (data) {
+                    await dispatch(SET_LOGIN(true));
+                    await dispatch(SET_NAME(data.name));
+                    navigate("/dashboard");
+                    setIsLoading(false)
+                }
+            } catch (error) {
+                setIsLoading(false);
+            }
 
-        if (!name) {
-            toast.warn('Error: Name is required', {
-                className: 'custom-toast',
-            });
-            return;
         }
-        if (!email) {
-            toast.warn('Error: Email is required', {
-                className: 'custom-toast',
-            });
-            return;
+        if (!email || !password) {
+            return toast.error("All fields are required");
         }
-        if (password.length < 6) {
-            toast.warn('Error: Password must be up to 6 chapters', {
-                className: 'custom-toast',
-            });
-            return;
+
+        if (!validateEmail(email)) {
+            return toast.error("Please enter a valid email");
         }
-        if (password !== password2) {
-            toast.warn('Error: Passwords do not match', {
-                className: 'custom-toast',
-            });
-            return;
-        }
+
         const userData = {
-            name,
             email,
             password,
-        }
+        };
         setIsLoading(true);
         try {
-
-        } catch (err) {
-            console.log(err);
+            const data = await loginUser(userData);
+            console.log(data);
+            await dispatch(SET_LOGIN(true));
+            await dispatch(SET_NAME(data.name));
+            navigate("/dashboard");
+            setIsLoading(false);
+        } catch (error) {
+            setIsLoading(false);
         }
+
     }
     const handleInputChange = (e) => {
         const {name, value} = e.target;
         setFormData({...formData, [name]: value});
     }
-    useEffect(() => {
-
-    }, [dispatch]);
 
     return (
         <>
@@ -161,4 +180,4 @@ const Auth = () => {
     );
 };
 
-export default Auth;
+export default Auth;;
