@@ -10,7 +10,7 @@ export const validateEmail = (email) => {
     );
 };
 
-// Register User
+//? Register User
 export const registerUser = async (userData) => {
     try {
         const response = await axios.post(
@@ -33,7 +33,7 @@ export const registerUser = async (userData) => {
 
 };
 
-// Login User
+//? Login User
 export const loginUser = async (userData) => {
     try {
         const response = await axios.post(
@@ -53,7 +53,7 @@ export const loginUser = async (userData) => {
     }
 };
 
-// Logout User
+//? Logout User
 export const logoutUser = async () => {
     try {
         await axios.get(`${BACKEND_URL}/api/users/logout`);
@@ -66,7 +66,7 @@ export const logoutUser = async () => {
     }
 };
 
-// Forgot Password
+//? Forgot Password
 export const forgotPassword = async (userData) => {
     try {
         const response = await axios.post(
@@ -83,23 +83,23 @@ export const forgotPassword = async (userData) => {
     }
 };
 
-// // Reset Password
-// export const resetPassword = async (userData, resetToken) => {
-//     try {
-//         const response = await axios.put(
-//             `${BACKEND_URL}/api/users/resetpassword/${resetToken}`,
-//             userData
-//         );
-//         return response.data;
-//     } catch (error) {
-//         const message =
-//             (error.response && error.response.data && error.response.data.message) ||
-//             error.message ||
-//             error.toString();
-//         toast.error(message);
-//     }
-// };
-//
+//? Reset Password
+export const resetPassword = async (userData, resetToken) => {
+    try {
+        const response = await axios.put(
+            `${BACKEND_URL}/api/users/resetpassword/${resetToken}`,
+            userData
+        );
+        return response.data;
+    } catch (error) {
+        const message =
+            (error.response && error.response.data && error.response.data.message) ||
+            error.message ||
+            error.toString();
+        toast.error(message);
+    }
+};
+
 // // Get Login Status
 // export const getLoginStatus = async () => {
 //     try {

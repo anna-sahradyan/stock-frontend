@@ -23,8 +23,7 @@ const Header = () => {
             <div className={"layout"}>
                 <section className={"nav-header"}>
                     <div className="logo">
-                        <h2><span>Welcome:</span><span style={{color:"#1976D2",fontSize:"20px",marginLeft:"10px",
-                        }}>{name.toUpperCase()}</span></h2>
+                        <h2><span>Welcome:</span><span className={"text_name"} >{name}</span></h2>
                     </div>
                     <Button onClick={logOut} size="medium" variant="contained"> Logout
                     </Button>

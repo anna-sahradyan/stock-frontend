@@ -2,21 +2,32 @@ import React, {useState} from 'react';
 import "./auth.scss";
 import Loader from "../../components/Loading/Loader";
 import {Button, Card} from "@mui/material";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {MdPassword} from "react-icons/md";
+import {useDispatch} from "react-redux";
+import {toast} from "react-toastify";
 
 const Reset = () => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-    const [password, setPassword] = useState("");
-    const [password2, setPassword2] = useState("");
+    const dispatch = useDispatch();
+    const {resetToken} = useParams();
+    const [formData, setFormData] = useState({
+        password:"",
+        password2:""
+    });
 
-    const login = (e) => {
+    const reset = (e) => {
         e.preventDefault();
+        if (formData.password.length < 6) {
+            return toast.error("Passwords must be up to 6 characters");
+        }
     }
-    const handleInputChange = () => {
+    const handleInputChange = (e) => {
+        const {name, value} = e.target;
+        setFormData({...formData, [name]: value});
+    }
 
-    }
     return (
         <>
             <div className={"content"}>
@@ -41,30 +52,29 @@ const Reset = () => {
                     }}>
                         <div>
                             <div className="bi">
-                                <MdPassword size={35} color="#999" />
+                                <MdPassword size={35} color="#999"/>
 
                             </div>
                             <h1>{"Reset Password"}</h1>
 
-                            <form onSubmit={login} className={"form"}>
-
+                            <form onSubmit={reset} className={"form"}>
                                 <input
                                     type="password"
                                     placeholder=" New Password"
                                     name="password"
-                                    value={password}
+                                    value={formData.password}
                                     onChange={handleInputChange}
                                 />
                                 <input
                                     type="password"
                                     placeholder="Confirm  New Password"
                                     name="password2"
-                                    value={password2}
+                                    value={formData.password2}
                                     onChange={handleInputChange}
                                 />
 
                                 <Button type="submit" className="btnLogin" variant={"contained"}>
-                                     Reset Password
+                                    Reset Password
                                 </Button>
                                 <Button className={"btnReg"} onClick={() => navigate("/auth")}>
                                     {"Sign In "}

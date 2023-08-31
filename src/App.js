@@ -21,7 +21,7 @@ const App = () => {
                 <Route path={"/"} element={<Home/>}/>
                 <Route path={"/auth"} element={<Auth/>}/>
                 <Route path={"/forgot"} element={<Forgot/>}/>
-                <Route path={"/reset/:token"} element={<Reset/>}/>
+                <Route path={"/reset/:resetToken"} element={<Reset/>}/>
                 <Route path="/add" element={<Sidebar><Layout><AddProduct/></Layout></Sidebar>}/>
                 <Route path="/dashboard" element={<Sidebar><Layout><Dashboard/></Layout></Sidebar>}/>
 

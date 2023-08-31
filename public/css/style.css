@@ -69,3 +69,12 @@ button {
         transform: translate(-50%, -50%);
         z-index: 999;
     }
+.text_name{
+    color:#1976D2;
+    font-size:20px;
+    margin-left:10px;
+
+}
+.text_name::first-letter{
+text-transform: uppercase;
+}
