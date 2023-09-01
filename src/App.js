@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Route, Routes} from "react-router-dom";
 import Home from "./components/home/Home";
 import Layout from "./components/layout/Layout";
@@ -9,10 +9,24 @@ import Forgot from "./pages/auth/Forgot";
 import Auth from "./pages/auth/Auth";
 import Dashboard from "./pages/dashboard/Dashboard";
 import {ToastContainer} from "react-toastify";
+import axios from "axios";
+import {useDispatch} from "react-redux";
+import {getLoginStatus} from "./api";
+import {SET_LOGIN} from "./redux/features/auth/authSlice";
 
+axios.defaults.withCredentials = true;
 
 
 const App = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        async function loginStatus() {
+            const status = await getLoginStatus();
+            dispatch(SET_LOGIN(status));
+        }
+        loginStatus();
+    }, [dispatch]);
 
     return (
         <>
