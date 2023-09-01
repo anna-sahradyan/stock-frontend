@@ -22,10 +22,13 @@ const Home = () => {
                         <div className="logo">
                             <RiProductHuntLine size={33}/>
                         </div>
+                        <div className="btn_nav">
                         <Button onClick={switchMode} size="medium" variant="contained"> {isSignup ? "Sign Up" : "Sign In"}
                         </Button>
+                            <Link to="/dashboard"><Button  size="medium" variant="contained" style={{marginLeft:"10px"}}> Dashboard
+                            </Button></Link>
 
-
+                        </div>
                     </section>
                 </div>
                 <SectionHome/>

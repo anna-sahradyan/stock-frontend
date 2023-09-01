@@ -6,6 +6,7 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import {MdPassword} from "react-icons/md";
 import {useDispatch} from "react-redux";
 import {toast} from "react-toastify";
+import {resetPassword} from "../../api";
 
 const Reset = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -13,15 +14,29 @@ const Reset = () => {
     const dispatch = useDispatch();
     const {resetToken} = useParams();
     const [formData, setFormData] = useState({
-        password:"",
-        password2:""
+        password: "",
+        password2: ""
     });
 
-    const reset = (e) => {
+    const reset = async (e) => {
         e.preventDefault();
         if (formData.password.length < 6) {
             return toast.error("Passwords must be up to 6 characters");
         }
+        if (formData.password !== formData.password2) {
+            return toast.error("Passwords do not match");
+        }
+        const userData = {
+            password: formData.password,
+            password2: formData.password2,
+        };
+        try {
+            const data = await resetPassword(userData, resetToken);
+            toast.success(data.message);
+        } catch (error) {
+            console.log(error.message);
+        }
+
     }
     const handleInputChange = (e) => {
         const {name, value} = e.target;
@@ -74,7 +89,7 @@ const Reset = () => {
                                 />
 
                                 <Button type="submit" className="btnLogin" variant={"contained"}>
-                                    Reset Password
+                                    Login
                                 </Button>
                                 <Button className={"btnReg"} onClick={() => navigate("/auth")}>
                                     {"Sign In "}

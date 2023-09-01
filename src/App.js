@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import Home from "./pages/home/Home";
+import Home from "./components/home/Home";
 import Layout from "./components/layout/Layout";
 import AddProduct from "./pages/addProduct/AddProduct ";
 import Sidebar from "./components/sidebar/Sidebar";
@@ -21,7 +21,7 @@ const App = () => {
                 <Route path={"/"} element={<Home/>}/>
                 <Route path={"/auth"} element={<Auth/>}/>
                 <Route path={"/forgot"} element={<Forgot/>}/>
-                <Route path={"/reset/:resetToken"} element={<Reset/>}/>
+                <Route path={"/resetpassword/:resetToken"} element={<Reset/>}/>
                 <Route path="/add" element={<Sidebar><Layout><AddProduct/></Layout></Sidebar>}/>
                 <Route path="/dashboard" element={<Sidebar><Layout><Dashboard/></Layout></Sidebar>}/>
 
