@@ -1,18 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "./home.scss";
-import {Link, useNavigate} from "react-router-dom";
-// import Header from "../../components/header/Header";
+import {Link} from "react-router-dom";
 import SectionHome from "./SectionHome";
 import {RiProductHuntLine} from "react-icons/ri";
 import {Button} from "@mui/material";
+import {useSelector} from "react-redux";
+import {selectLoggedIn} from "../../redux/features/auth/authSlice";
 
 const Home = () => {
-    const navigate = useNavigate();
-    const [isSignup, setIsSignup] = useState(false);
-    const switchMode = () => {
-        setIsSignup((prevIsSignup) => !prevIsSignup);
-        navigate("/auth")
-    }
+    const isLoggedIn = useSelector(selectLoggedIn)
     return (
         <>
 
@@ -23,10 +19,12 @@ const Home = () => {
                             <RiProductHuntLine size={33}/>
                         </div>
                         <div className="btn_nav">
-                        <Button onClick={switchMode} size="medium" variant="contained"> {isSignup ? "Sign Up" : "Sign In"}
-                        </Button>
-                            <Link to="/dashboard"><Button  size="medium" variant="contained" style={{marginLeft:"10px"}}> Dashboard
-                            </Button></Link>
+                            {!isLoggedIn ? <Link to="/auth"><Button size="medium"
+                                                  variant="contained"> Sign in
+                            </Button></Link> : null}
+                            {isLoggedIn ? <Link to="/dashboard"><Button size="medium" variant="contained"
+                                                                        style={{marginLeft: "10px"}}> Dashboard
+                            </Button></Link> : null}
 
                         </div>
                     </section>
