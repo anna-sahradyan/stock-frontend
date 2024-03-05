@@ -7,7 +7,7 @@ import {BiLogIn} from "react-icons/bi";
 import {TiUserAddOutline} from "react-icons/ti";
 import {useDispatch} from "react-redux";
 import {toast} from "react-toastify";
-import {loginUser, registerUser, validateEmail} from "../../api";
+import {loginUser, registerUser, validateEmail} from "../../api/authService";
 import {SET_LOGIN, SET_NAME} from "../../redux/features/auth/authSlice";
 
 

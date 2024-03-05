@@ -6,7 +6,7 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import {MdPassword} from "react-icons/md";
 import {useDispatch} from "react-redux";
 import {toast} from "react-toastify";
-import {resetPassword} from "../../api";
+import {resetPassword} from "../../api/authService";
 
 const Reset = () => {
     const [isLoading, setIsLoading] = useState(false);

@@ -6,7 +6,7 @@ import {Link, useNavigate} from "react-router-dom";
 
 import {AiOutlineMail} from "react-icons/ai";
 import {toast} from "react-toastify";
-import {forgotPassword, validateEmail} from "../../api";
+import {forgotPassword, validateEmail} from "../../api/authService";
 
 const Forgot = () => {
     const [isLoading, setIsLoading] = useState(false);

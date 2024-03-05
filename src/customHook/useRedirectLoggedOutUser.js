@@ -1,6 +1,6 @@
 import  {useEffect} from 'react';
 import {useDispatch} from "react-redux";
-import {getLoginStatus} from "../api";
+import {getLoginStatus} from "../api/authService";
 import {SET_LOGIN} from "../redux/features/auth/authSlice";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";

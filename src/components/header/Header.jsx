@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import "./header.scss";
 import {Button} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {logoutUser} from "../../api";
+import {logoutUser} from "../../api/authService";
 import {selectName, SET_LOGIN} from "../../redux/features/auth/authSlice";
 
 

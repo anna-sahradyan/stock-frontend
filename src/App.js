@@ -11,7 +11,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import {ToastContainer} from "react-toastify";
 import axios from "axios";
 import {useDispatch} from "react-redux";
-import {getLoginStatus} from "./api";
+import {getLoginStatus} from "./api/authService";
 import {SET_LOGIN} from "./redux/features/auth/authSlice";
 
 axios.defaults.withCredentials = true;

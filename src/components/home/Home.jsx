@@ -7,8 +7,10 @@ import {Button} from "@mui/material";
 import {useSelector} from "react-redux";
 import {selectLoggedIn} from "../../redux/features/auth/authSlice";
 
+
 const Home = () => {
     const isLoggedIn = useSelector(selectLoggedIn)
+    console.log(isLoggedIn)
     return (
         <>
 
@@ -19,12 +21,12 @@ const Home = () => {
                             <RiProductHuntLine size={33}/>
                         </div>
                         <div className="btn_nav">
-                            {!isLoggedIn ? <Link to="/auth"><Button size="medium"
-                                                  variant="contained"> Sign in
-                            </Button></Link> : null}
-                            {isLoggedIn ? <Link to="/dashboard"><Button size="medium" variant="contained"
-                                                                        style={{marginLeft: "10px"}}> Dashboard
-                            </Button></Link> : null}
+
+                            <Link to={"/auth"}><Button size="medium"
+                                                       variant="contained"> {isLoggedIn ? "Sign Out" : "Sign In"}</Button></Link>
+                            <Link to="/dashboard"><Button size="medium" variant="contained"
+                                                          style={{marginLeft: "10px"}}> Dashboard
+                            </Button></Link>
 
                         </div>
                     </section>
