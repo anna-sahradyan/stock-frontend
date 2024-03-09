@@ -1,21 +1,23 @@
 .addProduct {
-  margin: auto;
-  width: 700px;
+  width: 100%;
   height: 100dvh;
-
 
   & > h1 {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     color: #232F85;
     padding: 10px;
-
+    justify-content: center;
 
   }
+  .formPart{
+    width: 80%;
+    margin: auto;
+  }
+
+
 
   &.formPart {
+    width: 550px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,4 +43,5 @@
   padding: 0;
   margin: 0;
 }
+
 

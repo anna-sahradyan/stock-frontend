@@ -20,17 +20,13 @@ const Header = () => {
 
     return (
         <>
-            <div className={"layout"}>
-                <section className={"nav-header"}>
+            <section className={"nav-header"}>
                     <div className="logo">
                         <h2><span>Welcome:</span><span className={"text_name"} >{name}</span></h2>
                     </div>
                     <Button onClick={logOut} size="medium" variant="contained"> Logout
                     </Button>
-
-
                 </section>
-            </div>
         </>
     );
 };

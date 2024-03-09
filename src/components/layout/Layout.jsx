@@ -6,10 +6,11 @@ const Layout = ({children}) => {
     return (
         <>
             <Header/>
-            <div style={{minHeight: "80vh"}} className={"layout"}>
+            <div className={"layout"}>
                 {children}
             </div>
-            <Footer/>
+            {/*<Footer/>*/}
+
         </>
     );
 };
