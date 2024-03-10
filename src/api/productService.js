@@ -6,4 +6,10 @@ import {API_URL} from "./index";
     const response = await axios.post(API_URL, formData)
     return response.data
 }
+//?Get All Product
+export const getAllProduct = async () => {
+    const response = await axios.get(API_URL)
+    return response.data
+}
+
 
