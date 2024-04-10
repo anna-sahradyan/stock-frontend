@@ -12,7 +12,6 @@ export const createProductAsyncThunk = createAsyncThunk("product/create", async 
             (err.response && err.response.data && err.response.data.message) ||
             err.message ||
             err.toString();
-        console.log(message);
         return thunkAPI.rejectWithValue(message);
 
     }

@@ -5,6 +5,7 @@ import {createProductAsyncThunk, selectIsLoading} from "../../redux/features/pro
 import Loader from "../../components/Loading/Loader";
 import ProductForm from "./ProductForm";
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 const initialState = {
     name: '',
@@ -40,6 +41,10 @@ const AddProduct = () => {
     }
     const saveProduct = async (e) => {
         e.preventDefault();
+        if (!name || !category || !price || !quantity || !productImage || !description) {
+           toast.error("Please fill in all the required fields.");
+            return;
+        }
         const formData = new FormData();
         formData.append("name", name)
         formData.append("sku", genereteKSKU(category))
@@ -48,9 +53,14 @@ const AddProduct = () => {
         formData.append("price", price)
         formData.append("description", description)
         formData.append("image", productImage)
-        console.log(...formData);
-        await dispatch(createProductAsyncThunk(formData));
-        navigate('/dashboard')
+        try {
+            await dispatch(createProductAsyncThunk(formData));
+            navigate('/dashboard');
+        } catch (error) {
+            toast.error("Error occurred while saving product:", error);
+
+        }
+
     }
     return (
         <>
