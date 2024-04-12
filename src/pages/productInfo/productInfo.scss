@@ -1,0 +1,11 @@
+@import "../../../public/css/vars";
+
+.wrapper_info{
+  h1 {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 5px;
+    color: $accent;
+    font-size: 18px;
+  }
+}
