@@ -31,68 +31,39 @@ const Auth = () => {
         setIsSignUp((prevIsSignUp) => !prevIsSignUp);
         navigate("/forgot");
     }
+
     const login = async (e) => {
         e.preventDefault();
-        if(isSignUp){
-            if (!name || !email || !password) {
-                return toast.error("All fields are required");
-            }
-            if (password.length < 6) {
-                return toast.error("Passwords must be up to 6 characters");
-            }
-            if (!validateEmail(email)) {
-                return toast.error("Please enter a valid email");
-            }
-            if (password !== password2) {
-                return toast.error("Passwords do not match");
-            }
-            const userData = {
-                name,
-                email,
-                password,
-            };
-            setIsLoading(true);
-            try {
-                const data = await registerUser(userData);
-                if (data) {
-                    await dispatch(SET_LOGIN(true));
-                    await dispatch(SET_NAME(data.name));
-                    navigate("/dashboard");
-                    setIsLoading(false)
+        if (!email || !password) {
+            return toast.error("All fields are required");
+        }
+
+        if (!validateEmail(email)) {
+            return toast.error("Please enter a valid email");
+        }
+
+        setIsLoading(true);
+        try {
+            if (isSignUp) {
+                if (!name || !password2) {
+                    return toast.error("All fields are required");
                 }
-            } catch (error) {
-                setIsLoading(false);
+                if (password !== password2) {
+                    return toast.error("Passwords do not match");
+                }
+                const userData = { name, email, password };
+                await registerUser(userData);
+            } else {
+                await loginUser({ email, password });
             }
-
+            await dispatch(SET_LOGIN(true));
+            await dispatch(SET_NAME(name));
+            navigate("/dashboard");
+        } catch (error) {
+            setIsLoading(false);
+            toast.error(error.response.data.message || "An error occurred");
         }
-        else{
-            if (!email || !password) {
-                return toast.error("All fields are required");
-            }
-
-            if (!validateEmail(email)) {
-                return toast.error("Please enter a valid email");
-            }
-
-            const userData = {
-                email,
-                password,
-            };
-            setIsLoading(true);
-            try {
-                const data = await loginUser(userData);
-                console.log(data);
-                await dispatch(SET_LOGIN(true));
-                await dispatch(SET_NAME(data.name));
-                navigate("/dashboard");
-                setIsLoading(false);
-            } catch (error) {
-                setIsLoading(false);
-            }
-
-        }
-
-    }
+    };
     const handleInputChange = (e) => {
         const {name, value} = e.target;
         setFormData({...formData, [name]: value});
@@ -127,7 +98,7 @@ const Auth = () => {
                             <h1>{isSignUp ? "Sign Up" : "Sign In"}</h1>
                             <form onSubmit={login} className={"form"}>
                                 <input
-                                    type="email"
+                                    type='text'
                                     placeholder="Email"
                                     name="email"
                                     value={email}

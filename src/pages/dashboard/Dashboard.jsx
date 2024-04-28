@@ -12,14 +12,15 @@ const Dashboard = () => {
     useRedirectLoggedOutUser("/auth");
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(selectLoggedIn);
-    const {products, isError, isLoading, message} = useSelector((state) => state.product);
+    const products = useSelector((state) => state.product.products);
+    const { isError, isLoading, message} = useSelector((state) => state.product);
     useEffect(() => {
         if (isLoggedIn){
             dispatch(getAllProductAsyncThunk());
         }
 
     }, [dispatch]);
-
+    console.log(products)
     useEffect(() => {
         if (isError) {
             toast.error(message);
@@ -29,7 +30,7 @@ const Dashboard = () => {
         <>
             <div className="wrapper">
                 <ProductInfo/>
-                <ProductList/>
+                <ProductList products={products} isLoading={isLoading}/>
             </div>
         </>
     );
