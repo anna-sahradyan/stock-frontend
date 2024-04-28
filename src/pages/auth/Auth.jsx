@@ -97,29 +97,29 @@ const Auth = () => {
                             </div>
                             <h1>{isSignUp ? "Sign Up" : "Sign In"}</h1>
                             <form onSubmit={login} className={"form"}>
-                                <input
-                                    type='text'
-                                    placeholder="Email"
-                                    name="email"
-                                    value={email}
-                                    onChange={handleInputChange}
-                                />
-                                <input
-                                    type="password"
-                                    placeholder="Password"
-                                    name="password"
-                                    value={password}
-                                    onChange={handleInputChange}
-                                />
-
-                                {isSignUp && (
-                                    <>
-
+                                {!isSignUp &&
+                                    <><input
+                                            type='text'
+                                            placeholder="Email"
+                                            name="email"
+                                            value={email}
+                                            onChange={handleInputChange}
+                                        />
                                         <input
                                             type="password"
-                                            placeholder="Confirm Password"
-                                            name="password2"
-                                            value={password2}
+                                            placeholder="Password"
+                                            name="password"
+                                            value={password}
+                                            onChange={handleInputChange}
+                                        /></>
+                                }
+                                {isSignUp && (
+                                    <>
+                                        <input
+                                            type='text'
+                                            placeholder="Email"
+                                            name="email"
+                                            value={email}
                                             onChange={handleInputChange}
                                         />
                                         <input
@@ -129,6 +129,21 @@ const Auth = () => {
                                             value={name}
                                             onChange={handleInputChange}
                                         />
+                                        <input
+                                            type="password"
+                                            placeholder="Password"
+                                            name="password"
+                                            value={password}
+                                            onChange={handleInputChange}
+                                        />
+                                        <input
+                                            type="password"
+                                            placeholder="Confirm Password"
+                                            name="password2"
+                                            value={password2}
+                                            onChange={handleInputChange}
+                                        />
+
 
                                     </>
                                 )}
@@ -136,7 +151,7 @@ const Auth = () => {
                                     Submit
                                 </Button>
                                 <Button onClick={switchMode} className={"btnReg"}>
-                                    {isSignUp ? "Already have an account ? Sign In " : "Don't have an account ? Sign Up"}
+                                {isSignUp ? "Already have an account ? Sign In " : "Don't have an account ? Sign Up"}
                                 </Button>
                                 <Button onClick={switchModeForgot} className={"btnReg"}>
                                     {isSignUp ? "Don't have an account ? Sign Up" : "Forgot Password ? Forgot Password "}
